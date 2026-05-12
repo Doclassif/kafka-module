@@ -1,5 +1,5 @@
 {
-    "name": "doclassif/laravel-outbox-kafka",
+    "name": "doclassif/kafka-module",
     "type": "laravel-module",
     "description": "Outbox pattern for Kafka as a Laravel module",
     "require": {
