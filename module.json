@@ -1,0 +1,11 @@
+{
+    "name": "Kafka",
+    "alias": "kafka",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Kafka\\Providers\\KafkaServiceProvider"
+    ],
+    "files": []
+}

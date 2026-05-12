@@ -1,0 +1,24 @@
+{
+    "name": "doclassif/laravel-outbox-kafka",
+    "type": "laravel-module",
+    "description": "Laravel outbox kafka module",
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {}
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Kafka\\": "app/",
+            "Modules\\Kafka\\Database\\Factories\\": "database/factories/",
+            "Modules\\Kafka\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Feature\\Modules\\Kafka\\": "tests/Feature/",
+            "Tests\\Unit\\Modules\\Kafka\\": "tests/Unit/"
+        }
+    }
+}
