@@ -1,12 +1,17 @@
 {
     "name": "doclassif/laravel-outbox-kafka",
     "type": "laravel-module",
-    "description": "Laravel outbox kafka module",
+    "description": "Outbox pattern for Kafka as a Laravel module",
+    "require": {
+        "php": "^8.0",
+        "joshbrw/laravel-module-installer": "^2.0"
+    },
     "extra": {
         "laravel": {
             "providers": [],
             "aliases": {}
-        }
+        },    
+        "module-dir": "modules"
     },
     "autoload": {
         "psr-4": {
