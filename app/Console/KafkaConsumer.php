@@ -6,10 +6,10 @@ use Illuminate\Console\Command;
 use Junges\Kafka\Facades\Kafka;
 
 abstract class KafkaConsumer extends Command
-{   
+{
     /** @return class-string */
     abstract protected function handler(): callable|string;
-    
+
     /** @return string[] */
     abstract protected function topics(): array;
 
@@ -33,8 +33,13 @@ abstract class KafkaConsumer extends Command
     {
         $handlerClass = $this->handler();
 
+        $topics = array_map(function ($item)
+        {
+            return config('kafka.topic_prefix', app()->environment()).'.'.$item;
+        }, $this->topics());
+
         Kafka::consumer()
-            ->subscribe($this->topics())
+            ->subscribe($topics)
             ->withHandler(app($handlerClass))
             ->withConsumerGroupId($this->groupId())
             ->withBrokers($this->brokers())

@@ -14,7 +14,7 @@ class KafkaOutboxPublisher
     public function publish(string $topic, array $payload, ?string $key = null, bool $dispatch = false): KafkaOutboxMessage
     {
         $message = KafkaOutboxMessage::create([
-            'topic' => $topic,
+            'topic' => config('kafka.topic_prefix', app()->environment()).'.'.$topic,
             'key' => $key,
             'payload' => $payload,
             'status' => KafkaOutboxStatus::PENDING,

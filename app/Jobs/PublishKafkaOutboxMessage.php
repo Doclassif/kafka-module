@@ -36,7 +36,7 @@ class PublishKafkaOutboxMessage implements ShouldBeUnique, ShouldQueue
         }
 
         try {
-            $producer = Kafka::publish((string) config('kafka.brokers'))
+            $producer = Kafka::publish()
                 ->onTopic($message->topic)
                 ->withBody($message->payload);
 
