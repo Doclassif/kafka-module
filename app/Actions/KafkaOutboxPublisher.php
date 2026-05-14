@@ -11,7 +11,7 @@ class KafkaOutboxPublisher
     /**
      * @param  array<string, mixed>  $payload
      */
-    public function publish(string $topic, array $payload, ?string $key = null): KafkaOutboxMessage
+    public function publish(string $topic, array $payload, ?string $key = null, bool $dispatch = false): KafkaOutboxMessage
     {
         $message = KafkaOutboxMessage::create([
             'topic' => $topic,
@@ -21,7 +21,8 @@ class KafkaOutboxPublisher
             'available_at' => now(),
         ]);
 
-        PublishKafkaOutboxMessage::dispatch($message->id)->afterCommit();
+        if ($dispatch)
+            PublishKafkaOutboxMessage::dispatch($message->id)->afterCommit();
 
         return $message->refresh();
     }
