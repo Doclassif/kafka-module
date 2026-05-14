@@ -24,13 +24,12 @@ class KafkaServiceProvider extends ModuleServiceProvider
     {
         parent::boot();
 
-        $this->app->booted(function (): void {
-            $schedule = $this->app->make(Schedule::class);
+        // $this->app->booted(function (): void {
+        //     $schedule = $this->app->make(Schedule::class);
 
-            $schedule->call(fn () => $this->app->make(KafkaOutboxDispatcher::class)->dispatchPending())
-                ->name('kafka-outbox-flush')
-                ->everyMinute()
-                ->withoutOverlapping();
-        });
+        //     $schedule->call(fn () => $this->app->make(KafkaOutboxDispatcher::class)->dispatchPending())
+        //         ->everyMinute()
+        //         ->withoutOverlapping();
+        // });
     }
 }
