@@ -18,7 +18,7 @@ class KafkaOutboxDispatcher
                     ->whereNull('available_at')
                     ->orWhere('available_at', '<=', now());
             })
-            ->whereRaw("topic like '?.%'", [config('kafka.topic_prefix', app()->environment())])
+            ->whereRaw("topic like '?'", [config('kafka.topic_prefix', app()->environment()).'.%'])
             ->orderBy('id')
             ->limit($limit)
             ->get()
