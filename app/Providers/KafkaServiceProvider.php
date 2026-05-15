@@ -32,4 +32,5 @@ class KafkaServiceProvider extends ModuleServiceProvider
         //         ->withoutOverlapping();
         // });
     }
+    public function registerViews(): void {}
 }
