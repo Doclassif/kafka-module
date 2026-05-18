@@ -44,6 +44,12 @@ abstract class KafkaConsumer extends Command
             ->withConsumerGroupId($this->groupId())
             ->withBrokers($this->brokers())
             ->withAutoCommit($this->autoCommit())
+            ->withSasl(
+                config('kafka.sasl.username'),
+                config('kafka.sasl.password'),
+                config('kafka.sasl.mechanisms', 'PLAINTEXT'),
+                config('kafka.securityProtocol', 'PLAINTEXT')
+            )
             ->build()
             ->consume();
 
