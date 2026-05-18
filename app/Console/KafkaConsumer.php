@@ -13,7 +13,7 @@ abstract class KafkaConsumer extends Command
     /** @return string[] */
     abstract protected function topics(): array;
 
-    protected function autoCommit()
+    protected function autoCommit(): bool
     {
         return true;
     }
@@ -24,9 +24,9 @@ abstract class KafkaConsumer extends Command
     }
 
     /** @return string|null */
-    protected function groupId(): ?string
+    protected function groupId(): string
     {
-        return null;
+        return config('kafka.consumer_group_id');
     }
 
     public function handle(): int
